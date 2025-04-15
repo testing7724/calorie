@@ -1,0 +1,2 @@
+docker build -t nextjs-food-app .
+docker run -p 9000:3000 -e GOOGLE_GENAI_API_KEY=your_key nextjs-food-app
