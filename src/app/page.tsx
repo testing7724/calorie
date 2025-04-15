@@ -110,55 +110,6 @@ export default function Home() {
           </Button>
         </CardContent>
       </Card>
-
-      {/* Identified Items and Calorie Estimation Section */}
-      {calorieEstimations && calorieEstimations.length > 0 && (
-        <Card className="w-full max-w-md">
-          <CardHeader>
-            <CardTitle>Calorie Estimation</CardTitle>
-            <CardDescription>Adjust quantities for accurate estimation.</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <ul>
-              {calorieEstimations.map((item, index) => (
-                <li key={index} className="py-2 border-b last:border-none">
-                  <div className="flex justify-between items-center">
-                    <span className="font-medium">{item.name}</span>
-                    <div className="flex items-center">
-                      <Input
-                        type="number"
-                        min="1"
-                        value={foodQuantities[item.name] || item.quantity}
-                        onChange={(e) => adjustQuantity(item.name, parseInt(e.target.value))}
-                        className="w-20 text-center mr-2"
-                      />
-                      <span className="text-muted-foreground">x {item.calories} cal = {item.calories * (foodQuantities[item.name] || item.quantity)} cal</span>
-                    </div>
-                  </div>
-                </li>
-              ))}
-            </ul>
-            <div className="flex justify-end mt-4 font-bold text-lg">
-              Total Calories: {calculateTotalCalories()}
-            </div>
-          </CardContent>
-        </Card>
-      )}
-
-      {/* Manual Entry Option */}
-      {!imageSrc && (
-        <Card className="w-full max-w-md mt-4">
-          <CardContent className="flex flex-col items-center">
-            <MenuIcon className="w-6 h-6 mb-2 text-muted-foreground"/>
-            <p className="text-sm text-muted-foreground text-center">
-              Alternatively, you can manually enter food items.
-            </p>
-            <Button variant="outline" className="mt-4 text-accent hover:bg-accent hover:text-accent-foreground">
-              Manual Entry (Coming Soon)
-            </Button>
-          </CardContent>
-        </Card>
-      )}
     </div>
   );
 }
